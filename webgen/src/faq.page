@@ -1,0 +1,40 @@
+---
+title: FAQ
+---
+
+h1. Setup environment manually
+
+<pre>
+mkdir shiny_project
+cd shiny_project
+
+mkdir real
+mkdir .backup
+mkdir meta
+
+lazibi
+</pre>
+
+create .py.rb files in corresponding directories inside 'meta', .rb files will be created and updated in 'real' as usual
+
+h1. Exclude certain directories
+
+Stop Lazibi process, edit lazibi_config.rb in project/real/config/, start Lazibi. For example:
+
+<pre>
+def exclude
+  ['^vendor', 'tmp']
+end
+</pre>
+
+h1. RSpec taste
+
+Edit lazibi_config.rb in project/real/config/. For example:
+
+<pre>
+def filters
+  {:optional_do => ['^spec', '^dsl'], :optional_end => ['']}
+end
+</pre>
+
+Personally I would not recommend using this filter outside the context of RSpec.
